@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIP Bâtiment - Plomberie & Rénovation Intérieure à Roissy-en-Brie</title>
+    <meta name="description" content="FIP Bâtiment, votre artisan plombier et expert en rénovation intérieure à Roissy-en-Brie (77). Salles de bains, cuisines, revêtements. Devis gratuit.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛠️</text></svg>">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto:wght@700;900&display=swap" rel="stylesheet">
+
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Roboto', sans-serif;
+        }
+        [x-cloak] { display: none !important; }
+        html { scroll-behavior: smooth; }
+
+        /* Custom scrollbar for better UX */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1e40af;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1d4ed8;
+        }
+    </style>
+</head>
+<body class="bg-white antialiased">
+    <!-- Alpine.js CDN -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true });
+    </script>
+
+    <!-- Top Bar (Desktop Only) -->
+    <div class="hidden md:block bg-slate-800 text-white text-sm py-2">
+        <div class="container mx-auto px-8 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <span>📞 <a href="tel:0671056366" class="hover:text-blue-200">06 71 05 63 66</a></span>
+                <span>⏰ Du Lundi au Vendredi : 8h - 18h</span>
+            </div>
+            <div>
+                <span>📍 Roissy-en-Brie (77680)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-40 bg-white shadow-md" x-data="{ open: false }">
+        <nav class="container mx-auto px-4 md:px-8 py-4 flex justify-between items-center">
+            <a href="#hero" class="text-2xl font-bold text-blue-700 hover:text-blue-800 transition duration-300">
+                FIP Bâtiment
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#hero" class="text-lg text-slate-700 hover:text-blue-700 font-medium transition duration-300">Accueil</a>
+                <a href="#about" class="text-lg text-slate-700 hover:text-blue-700 font-medium transition duration-300">Qui sommes-nous ?</a>
+                <a href="#services" class="text-lg text-slate-700 hover:text-blue-700 font-medium transition duration-300">Nos Services</a>
+                <a href="#engagement" class="text-lg text-slate-700 hover:text-blue-700 font-medium transition duration-300">Nos Engagements</a>
+                <a href="#contact" class="text-lg text-slate-700 hover:text-blue-700 font-medium transition duration-300">Contact</a>
+            </div>
+
+            <!-- Mobile Burger Icon -->
+            <button @click="open = !open" class="md:hidden focus:outline-none z-50" aria-label="Toggle menu">
+                <svg class="w-8 h-8 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+
+            <!-- Mobile Overlay Menu -->
+            <div x-cloak x-show="open" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90" class="fixed inset-0 z-50 bg-white flex flex-col items-center justify-center space-y-8 md:hidden">
+                <button @click="open = false" class="absolute top-6 right-6 focus:outline-none" aria-label="Close menu">
+                    <svg class="w-10 h-10 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                <a @click="open = false" href="#hero" class="text-3xl text-slate-800 hover:text-blue-700 font-bold transition duration-300">Accueil</a>
+                <a @click="open = false" href="#about" class="text-3xl text-slate-800 hover:text-blue-700 font-bold transition duration-300">Qui sommes-nous ?</a>
+                <a @click="open = false" href="#services" class="text-3xl text-slate-800 hover:text-blue-700 font-bold transition duration-300">Nos Services</a>
+                <a @click="open = false" href="#engagement" class="text-3xl text-slate-800 hover:text-blue-700 font-bold transition duration-300">Nos Engagements</a>
+                <a @click="open = false" href="#contact" class="text-3xl text-slate-800 hover:text-blue-700 font-bold transition duration-300">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="relative bg-cover bg-center h-[600px] flex items-center justify-center text-white" style="background-image: url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1600&q=80');">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-900/70 to-blue-700/50"></div>
+            <div class="relative z-10 text-center max-w-4xl px-4" data-aos="fade-up">
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 drop-shadow-lg">
+                    FIP Bâtiment : Votre expert en Plomberie & Rénovation Intérieure à Roissy-en-Brie
+                </h1>
+                <p class="text-lg md:text-xl font-light mb-8 opacity-90">
+                    Solutions clé en main pour cuisines, salles de bains et intérieurs modernes en Seine-et-Marne (77).
+                </p>
+                <a href="#contact" class="inline-block bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                    Demander un Devis Gratuit
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="px-4 py-12 md:px-8 md:py-24 bg-gradient-to-br from-blue-50 to-white">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-center text-blue-700 mb-12" data-aos="fade-up">
+                    Qui sommes-nous ?
+                </h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div data-aos="fade-right" data-aos-delay="200">
+                        <img src="https://images.unsplash.com/photo-1604709177225-055f99402ea3?auto=format&fit=crop&w=800&q=80" alt="Artisan plombier travaillant sur des tuyaux" class="rounded-2xl shadow-xl w-full h-auto object-cover max-h-[400px]">
+                    </div>
+                    <div data-aos="fade-left" data-aos-delay="300">
+                        <p class="text-lg text-slate-700 mb-6 leading-relaxed">
+                            FIP Bâtiment, c'est l'histoire d'une entreprise familiale basée à <strong class="text-blue-700">Roissy-en-Brie (77680)</strong>, née de la passion pour l'aménagement intérieur de qualité. Forts de notre expertise en <strong class="text-blue-700">plomberie et rénovation</strong>, nous accompagnons les particuliers dans la réalisation de leurs rêves d'intérieur.
+                        </p>
+                        <p class="text-lg text-slate-700 leading-relaxed">
+                            Nous sommes fiers d'être l'artisan <strong class="text-blue-700">polyvalent</strong> de confiance, intervenant à Roissy-en-Brie et ses environs (Brie-Comte-Robert, Lagny-sur-Marne, Thorigny-sur-Marne), combinant savoir-faire technique et sens esthétique pour des projets <strong class="text-blue-700">clé en main</strong>. Notre engagement ? Des matériaux durables, des installations conformes aux normes et une satisfaction client garantie.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="px-4 py-12 md:px-8 md:py-24 bg-white">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-center text-blue-700 mb-12" data-aos="fade-up">
+                    Nos Prestations de Rénovation et Plomberie
+                </h2>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Service 1: Plomberie Générale -->
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden group hover:shadow-2xl transition duration-300 ease-in-out" data-aos="fade-up" data-aos-delay="100">
+                        <img src="https://images.unsplash.com/photo-1604709177225-055f99402ea3?auto=format&fit=crop&w=800&q=80" alt="Plomberie générale" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-blue-700 mb-3">Plomberie Générale</h3>
+                            <p class="text-slate-600">Dépannage rapide, installation de réseaux d'eau et d'évacuation, pose de chauffe-eau, robinetterie et WC suspendus.</p>
+                        </div>
+                    </div>
+
+                    <!-- Service 2: Salles de Bains -->
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden group hover:shadow-2xl transition duration-300 ease-in-out" data-aos="fade-up" data-aos-delay="200">
+                        <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=800&q=80" alt="Installation de salle de bain moderne" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-blue-700 mb-3">Rénovation Salles de Bains</h3>
+                            <p class="text-slate-600">Vente et installation complète : douches italiennes, baignoires, meubles vasques, carrelage étanche. Rénovation totale.</p>
+                        </div>
+                    </div>
+
+                    <!-- Service 3: Cuisines -->
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden group hover:shadow-2xl transition duration-300 ease-in-out" data-aos="fade-up" data-aos-delay="300">
+                        <img src="https://images.unsplash.com/photo-1605117882932-f9e32b03fea9?auto=format&fit=crop&w=800&q=80" alt="Aménagement de cuisine sur mesure" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-blue-700 mb-3">Aménagement Cuisines</h3>
+                            <p class="text-slate-600">Vente et pose d'équipements (éviers, plans de travail), raccordements plomberie. Agencement de cuisines sur mesure.</p>
+                        </div>
+                    </div>
+
+                    <!-- Service 4: Revêtements -->
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden group hover:shadow-2xl transition duration-300 ease-in-out" data-aos="fade-up" data-aos-delay="400">
+                        <img src="https://images.unsplash.com/photo-1562259929-d6d9f6b5c6e1?auto=format&fit=crop&w=800&q=80" alt="Pose de revêtements de sol et mur" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-blue-700 mb-3">Revêtements Sols & Murs</h3>
+                            <p class="text-slate-600">Pose de carrelage, faïence, sols stratifiés, parquets et peinture décorative pour des finitions impeccables.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Engagement Section -->
+        <section id="engagement" class="px-4 py-12 md:px-8 md:py-24 bg-gradient-to-tl from-blue-50 to-white">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-center text-blue-700 mb-12" data-aos="fade-up">
+                    Nos Engagements : Qualité, Transparence & Sérénité
+                </h2>
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                        <div class="text-5xl text-blue-600 mb-4">✨</div>
+                        <h3 class="text-2xl font-bold text-slate-800 mb-3">Expertise Multi-métiers</h3>
+                        <p class="text-slate-700">Plomberie et second œuvre coordonnés pour une gestion de projet simplifiée, esthétique et fonctionnelle.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-5xl text-blue-600 mb-4">✅</div>
+                        <h3 class="text-2xl font-bold text-slate-800 mb-3">Qualité Garantie</h3>
+                        <p class="text-slate-700">Utilisation de matériaux durables et installations conformes aux normes en vigueur pour votre tranquillité.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                        <div class="text-5xl text-blue-600 mb-4">⏱️</div>
+                        <h3 class="text-2xl font-bold text-slate-800 mb-3">Réactivité & Propreté</h3>
+                        <p class="text-slate-700">Interventions rapides pour les urgences, chantiers propres et respect des délais pour toutes rénovations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA / Contact Section -->
+        <section id="contact" class="px-4 py-12 md:px-8 md:py-24 bg-blue-700 text-white">
+            <div class="container mx-auto max-w-6xl text-center" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-8">
+                    Prêt pour votre projet de rénovation ou de plomberie ?
+                </h2>
+                <p class="text-lg md:text-xl font-light mb-10 opacity-90">
+                    Contactez FIP Bâtiment dès aujourd'hui pour un <strong class="text-white">devis gratuit et personnalisé</strong>. Nous vous accompagnons de la conception à la réalisation de votre intérieur de rêve.
+                </p>
+                <a href="tel:0671056366" class="inline-block bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 text-lg">
+                    Appelez-nous : 06 71 05 63 66
+                </a>
+                <p class="text-sm mt-8 opacity-80">
+                    Intervention à Roissy-en-Brie (77680) et ses environs (Brie-sur-Marne, Lagny-sur-Marne, Thorigny-sur-Marne).
+                </p>
+            </div>
+        </section>
+
+        <!-- Google Map Section -->
+        <section class="px-4 py-12 md:px-8 md:py-24 bg-white">
+            <div class="container mx-auto max-w-6xl" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-center text-blue-700 mb-8">
+                    Notre Localisation
+                </h2>
+                <div class="relative overflow-hidden rounded-xl shadow-2xl" style="padding-top: 56.25%;">
+                    <iframe class="absolute top-0 left-0 w-full h-full border-0" src="https://maps.google.com/maps?q=FIP%20B%C3%A2timent%20Roissy-en-Brie%2077680&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white px-4 py-12 md:px-8 md:py-16">
+        <div class="container mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            <div>
+                <h3 class="text-2xl font-bold text-blue-400 mb-4">FIP Bâtiment</h3>
+                <p class="text-slate-300">Votre expert en plomberie et rénovation intérieure en Seine-et-Marne.</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold text-blue-400 mb-4">Contact Rapide</h3>
+                <p class="text-slate-300 mb-2">📞 <a href="tel:0671056366" class="hover:text-white">06 71 05 63 66</a></p>
+                <p class="text-slate-300">📍 Roissy-en-Brie (77680)</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold text-blue-400 mb-4">Navigation</h3>
+                <ul>
+                    <li><a href="#hero" class="text-slate-300 hover:text-white transition duration-300">Accueil</a></li>
+                    <li><a href="#services" class="text-slate-300 hover:text-white transition duration-300">Nos Services</a></li>
+                    <li><a href="#contact" class="text-slate-300 hover:text-white transition duration-300">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-slate-700 mt-12 pt-8 text-center text-slate-400 text-sm">
+            <p>&copy; 2024 FIP Bâtiment. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
